@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SkyNet - Coming Soon</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;600;700&display=swap" rel="stylesheet">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SkyNet | Coming Soon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -16,220 +19,242 @@
 
 body{
     font-family:'Estedad',sans-serif;
-    height:100vh;
-    overflow:hidden;
     background:#050816;
     color:white;
+    height:100vh;
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
     position:relative;
 }
 
-/* Background Glow */
-body::before{
-    content:'';
+/* Background */
+
+.bg{
     position:absolute;
-    width:700px;
-    height:700px;
-    background:radial-gradient(circle,#3b82f655 0%,transparent 70%);
-    top:-200px;
-    right:-200px;
-    animation:float 8s ease-in-out infinite;
+    inset:0;
+    overflow:hidden;
 }
 
-body::after{
-    content:'';
+.circle{
     position:absolute;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle,#8b5cf655 0%,transparent 70%);
-    bottom:-250px;
-    left:-200px;
-    animation:float2 10s ease-in-out infinite;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:0.5;
+    animation:float 10s ease-in-out infinite;
+}
+
+.circle1{
+    width:400px;
+    height:400px;
+    background:#2563eb;
+    top:-120px;
+    right:-120px;
+}
+
+.circle2{
+    width:350px;
+    height:350px;
+    background:#7c3aed;
+    bottom:-100px;
+    left:-100px;
+    animation-delay:2s;
 }
 
 @keyframes float{
-    0%,100%{transform:translateY(0px);}
-    50%{transform:translateY(30px);}
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(30px);
+    }
 }
 
-@keyframes float2{
-    0%,100%{transform:translateY(0px);}
-    50%{transform:translateY(-25px);}
+/* Back Button */
+
+.back-btn{
+    position:absolute;
+    top:25px;
+    left:25px;
+    z-index:100;
+    width:50px;
+    height:50px;
+    border-radius:16px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:white;
+    font-size:22px;
+    transition:0.3s;
 }
+
+.back-btn:hover{
+    transform:translateY(-4px);
+    background:rgba(255,255,255,0.1);
+    color:#93c5fd;
+    box-shadow:0 0 20px rgba(59,130,246,0.3);
+}
+
+/* Main Box */
 
 .container{
     position:relative;
     z-index:10;
     width:90%;
-    max-width:900px;
-    text-align:center;
+    max-width:950px;
+    padding:60px 40px;
+    border-radius:35px;
     background:rgba(255,255,255,0.05);
     border:1px solid rgba(255,255,255,0.08);
-    backdrop-filter:blur(15px);
-    border-radius:30px;
-    padding:60px 40px;
+    backdrop-filter:blur(16px);
+    text-align:center;
     box-shadow:0 0 50px rgba(0,0,0,0.4);
 }
 
+/* Logo */
+
 .logo{
-    font-size:52px;
+    font-size:64px;
     font-weight:700;
-    margin-bottom:10px;
+    margin-bottom:18px;
     background:linear-gradient(90deg,#60a5fa,#a78bfa);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
-.subtitle{
-    color:#cbd5e1;
+/* Text */
+
+.text{
     font-size:18px;
-    margin-bottom:40px;
-    line-height:1.9;
+    line-height:2;
+    color:#cbd5e1;
+    margin-bottom:50px;
 }
 
-.status{
-    display:inline-block;
-    padding:10px 22px;
-    border-radius:50px;
-    background:rgba(59,130,246,0.15);
-    border:1px solid rgba(59,130,246,0.4);
-    color:#93c5fd;
-    margin-bottom:35px;
-    font-size:14px;
-}
+/* Countdown */
 
 .countdown{
     display:flex;
     justify-content:center;
-    gap:20px;
+    gap:22px;
     flex-wrap:wrap;
-    margin-top:20px;
 }
 
-.time-box{
-    width:140px;
-    height:140px;
-    border-radius:25px;
+.box{
+    width:150px;
+    height:150px;
+    border-radius:28px;
     background:rgba(255,255,255,0.05);
     border:1px solid rgba(255,255,255,0.08);
+    position:relative;
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
     transition:0.3s;
 }
 
-.time-box:hover{
+.box:hover{
     transform:translateY(-8px);
     background:rgba(255,255,255,0.08);
 }
 
-.number{
-    font-size:48px;
-    font-weight:700;
-    color:#fff;
+.label{
+    position:absolute;
+    top:18px;
+    font-size:15px;
+    color:#94a3b8;
 }
 
-.label{
-    margin-top:10px;
-    color:#94a3b8;
-    font-size:14px;
+.number{
+    font-size:52px;
+    font-weight:700;
+    margin-top:15px;
 }
+
+/* Footer */
 
 .footer{
-    margin-top:40px;
+    margin-top:45px;
     color:#64748b;
     font-size:14px;
 }
 
-.progress{
-    width:100%;
-    height:8px;
-    background:rgba(255,255,255,0.08);
-    border-radius:20px;
-    margin-top:40px;
-    overflow:hidden;
-}
-
-.progress-bar{
-    width:65%;
-    height:100%;
-    background:linear-gradient(90deg,#3b82f6,#8b5cf6);
-    border-radius:20px;
-    animation:progressAnim 3s ease-in-out infinite;
-}
-
-@keyframes progressAnim{
-    0%{width:40%;}
-    50%{width:75%;}
-    100%{width:40%;}
-}
+/* Responsive */
 
 @media(max-width:768px){
 
     .container{
-        padding:40px 20px;
+        padding:45px 20px;
     }
 
     .logo{
-        font-size:38px;
+        font-size:44px;
     }
 
-    .time-box{
-        width:110px;
-        height:110px;
+    .text{
+        font-size:16px;
+    }
+
+    .box{
+        width:120px;
+        height:120px;
     }
 
     .number{
-        font-size:36px;
+        font-size:40px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="bg">
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+</div>
 
-    <div class="status">
-        🚀 صفحه در حال توسعه است
-    </div>
+<a href="/" class="back-btn">
+    ←
+</a>
+
+<div class="container">
 
     <h1 class="logo">SkyNet</h1>
 
-    <p class="subtitle">
-        ما در حال ساخت یک تجربه حرفه‌ای و متفاوت هستیم.<br>
-        این صفحه به‌زودی در دسترس قرار خواهد گرفت.
+    <p class="text">
+        این صفحه در حال طراحی و توسعه می‌باشد<br>
+        به‌زودی با امکانات جدید در دسترس قرار خواهد گرفت
     </p>
 
     <div class="countdown">
 
-        <div class="time-box">
-            <div class="number" id="days">150</div>
+        <div class="box">
             <div class="label">روز</div>
+            <div class="number" id="days">200</div>
         </div>
 
-        <div class="time-box">
-            <div class="number" id="hours">10</div>
+        <div class="box">
             <div class="label">ساعت</div>
+            <div class="number" id="hours">10</div>
         </div>
 
-        <div class="time-box">
-            <div class="number" id="minutes">30</div>
+        <div class="box">
             <div class="label">دقیقه</div>
+            <div class="number" id="minutes">00</div>
         </div>
 
-        <div class="time-box">
-            <div class="number" id="seconds">00</div>
+        <div class="box">
             <div class="label">ثانیه</div>
+            <div class="number" id="seconds">00</div>
         </div>
 
-    </div>
-
-    <div class="progress">
-        <div class="progress-bar"></div>
     </div>
 
     <div class="footer">
@@ -241,20 +266,15 @@ body::after{
 <script>
 
 /*
-    زمان نهایی:
-    این تاریخ را تغییر بده
+    تاریخ نهایی شمارش معکوس
+    این مقدار را تغییر بده
 */
 
 const targetDate = new Date("2026-12-31T23:59:59").getTime();
 
 /*
-    ذخیره اولین ورود کاربر
-    تا با رفرش صفحه زمان از اول شروع نشود
+    بروزرسانی زمان
 */
-
-if(!localStorage.getItem("firstVisit")){
-    localStorage.setItem("firstVisit", Date.now());
-}
 
 function updateCountdown(){
 
@@ -302,9 +322,9 @@ function updateCountdown(){
         String(seconds).padStart(2,'0');
 }
 
-setInterval(updateCountdown,1000);
-
 updateCountdown();
+
+setInterval(updateCountdown,1000);
 
 </script>
 
