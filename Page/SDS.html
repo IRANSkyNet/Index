@@ -4,217 +4,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>SkyNet | Coming Soon</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
     font-family:'Estedad',sans-serif;
     background:#f8fafc;
-    color:#0f172a;
     height:100vh;
-    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
-    position:relative;
+    overflow:hidden;
+    color:#0f172a;
 }
 
-/* Background */
+/* جلوگیری از نمایش اولیه اشتباه */
+.container{
+    opacity:0;
+    transition:opacity 0.3s ease;
+}
 
+/* background */
 .bg{
     position:absolute;
     inset:0;
-    overflow:hidden;
 }
 
 .circle{
     position:absolute;
+    filter:blur(120px);
+    opacity:.35;
     border-radius:50%;
-    filter:blur(100px);
-    opacity:0.35;
-    animation:float 10s ease-in-out infinite;
+    animation:float 10s infinite ease-in-out;
 }
 
-.circle1{
-    width:420px;
-    height:420px;
-    background:#60a5fa;
-    top:-120px;
-    right:-120px;
-}
-
-.circle2{
-    width:350px;
-    height:350px;
-    background:#c084fc;
-    bottom:-100px;
-    left:-100px;
-    animation-delay:2s;
-}
+.circle1{width:420px;height:420px;background:#60a5fa;top:-120px;right:-120px;}
+.circle2{width:360px;height:360px;background:#c084fc;bottom:-120px;left:-120px;}
 
 @keyframes float{
-    0%,100%{
-        transform:translateY(0px);
-    }
-    50%{
-        transform:translateY(30px);
-    }
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(25px)}
 }
 
-/* Back Button */
-
+/* back button */
 .back-btn{
     position:absolute;
     top:25px;
     left:25px;
-    z-index:100;
-    width:55px;
-    height:55px;
-    border-radius:18px;
-    background:rgba(255,255,255,0.7);
-    border:1px solid rgba(0,0,0,0.06);
-    backdrop-filter:blur(10px);
+    width:55px;height:55px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
+    border-radius:18px;
+    background:rgba(255,255,255,.75);
     text-decoration:none;
     color:#0f172a;
     font-size:24px;
-    transition:0.3s;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    z-index:100;
 }
 
-.back-btn:hover{
-    transform:translateY(-4px);
-    background:white;
-    color:#2563eb;
-    box-shadow:0 15px 35px rgba(37,99,235,0.15);
-}
-
-/* Main Box */
-
+/* container */
 .container{
     position:relative;
     z-index:10;
     width:90%;
-    max-width:950px;
+    max-width:960px;
     padding:60px 40px;
     border-radius:38px;
-    background:rgba(255,255,255,0.72);
-    border:1px solid rgba(255,255,255,0.9);
+    background:rgba(255,255,255,.72);
     backdrop-filter:blur(18px);
     text-align:center;
-    box-shadow:
-        0 20px 60px rgba(15,23,42,0.08),
-        0 5px 20px rgba(15,23,42,0.05);
 }
 
-/* Logo */
-
+/* text */
 .logo{
     font-size:68px;
     font-weight:700;
-    margin-bottom:18px;
     background:linear-gradient(90deg,#2563eb,#9333ea);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
-/* Text */
-
 .text{
-    font-size:18px;
-    line-height:2.1;
+    margin:20px 0 50px;
     color:#475569;
-    margin-bottom:55px;
+    line-height:2;
 }
 
-/* Countdown */
-
+/* boxes */
 .countdown{
     display:flex;
     justify-content:center;
-    gap:22px;
+    gap:20px;
     flex-wrap:wrap;
 }
 
 .box{
     width:150px;
     height:150px;
-    border-radius:30px;
     background:white;
-    border:1px solid rgba(15,23,42,0.06);
-    position:relative;
+    border-radius:30px;
     display:flex;
     justify-content:center;
     align-items:center;
-    transition:0.3s;
-    box-shadow:
-        0 10px 30px rgba(15,23,42,0.05);
-}
-
-.box:hover{
-    transform:translateY(-8px);
-    box-shadow:
-        0 18px 40px rgba(37,99,235,0.12);
+    position:relative;
 }
 
 .label{
     position:absolute;
     top:18px;
-    font-size:15px;
+    font-size:14px;
     color:#64748b;
 }
 
 .number{
     font-size:54px;
     font-weight:700;
-    margin-top:16px;
-    color:#0f172a;
-}
-
-/* Footer */
-
-.footer{
-    margin-top:50px;
-    color:#94a3b8;
-    font-size:14px;
-}
-
-/* Responsive */
-
-@media(max-width:768px){
-
-    .container{
-        padding:45px 20px;
-    }
-
-    .logo{
-        font-size:48px;
-    }
-
-    .text{
-        font-size:16px;
-    }
-
-    .box{
-        width:120px;
-        height:120px;
-    }
-
-    .number{
-        font-size:40px;
-    }
 }
 
 </style>
@@ -227,104 +137,83 @@ body{
     <div class="circle circle2"></div>
 </div>
 
-<a href="https://6a08116a8465b.mywebzi.ir/" class="back-btn">
-    ←
-</a>
+<a class="back-btn" href="https://6a08116a8465b.mywebzi.ir/">←</a>
 
-<div class="container">
+<div class="container" id="container">
 
     <h1 class="logo">SkyNet</h1>
 
     <p class="text">
-        این صفحه در حال طراحی و توسعه می‌باشد<br>
-        به‌زودی با امکانات جدید در دسترس قرار خواهد گرفت
+        این صفحه در حال طراحی و توسعه می‌باشد
     </p>
 
     <div class="countdown">
 
         <div class="box">
             <div class="label">روز</div>
-            <div class="number" id="days">00</div>
+            <div class="number" id="days">--</div>
         </div>
 
         <div class="box">
             <div class="label">ساعت</div>
-            <div class="number" id="hours">00</div>
+            <div class="number" id="hours">--</div>
         </div>
 
         <div class="box">
             <div class="label">دقیقه</div>
-            <div class="number" id="minutes">00</div>
+            <div class="number" id="minutes">--</div>
         </div>
 
         <div class="box">
             <div class="label">ثانیه</div>
-            <div class="number" id="seconds">00</div>
+            <div class="number" id="seconds">--</div>
         </div>
 
-    </div>
-
-    <div class="footer">
-        © 2026 SkyNet Project — All Rights Reserved
     </div>
 
 </div>
 
 <script>
 
-/* تاریخ پایان شمارش معکوس */
-
-const targetDate = new Date("2027-03-31T23:59:59").getTime();
+/* هدف */
+const targetDate = new Date(2027, 04, 31, 23, 59, 59).getTime();
 
 function updateCountdown(){
 
-    const now = new Date().getTime();
+    const now = Date.now();
+    const diff = targetDate - now;
 
-    const distance = targetDate - now;
-
-    if(distance <= 0){
-
-        document.getElementById("days").innerHTML = "00";
-        document.getElementById("hours").innerHTML = "00";
-        document.getElementById("minutes").innerHTML = "00";
-        document.getElementById("seconds").innerHTML = "00";
-
+    if(diff <= 0){
+        setValues(0,0,0,0);
         return;
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
 
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24))
-        / (1000 * 60 * 60)
-    );
-
-    const minutes = Math.floor(
-        (distance % (1000 * 60 * 60))
-        / (1000 * 60)
-    );
-
-    const seconds = Math.floor(
-        (distance % (1000 * 60))
-        / 1000
-    );
-
-    document.getElementById("days").innerHTML =
-        String(days).padStart(2,'0');
-
-    document.getElementById("hours").innerHTML =
-        String(hours).padStart(2,'0');
-
-    document.getElementById("minutes").innerHTML =
-        String(minutes).padStart(2,'0');
-
-    document.getElementById("seconds").innerHTML =
-        String(seconds).padStart(2,'0');
+    setValues(days,hours,minutes,seconds);
 }
 
+function setValues(d,h,m,s){
+    document.getElementById("days").textContent = String(d).padStart(2,'0');
+    document.getElementById("hours").textContent = String(h).padStart(2,'0');
+    document.getElementById("minutes").textContent = String(m).padStart(2,'0');
+    document.getElementById("seconds").textContent = String(s).padStart(2,'0');
+}
+
+/* مهم: قبل از نمایش کامل */
 updateCountdown();
 
-setInterval(updateCountdown,1000);
+/* بعد از آماده شدن صفحه */
+window.addEventListener("load", () => {
+    updateCountdown();
+    document.getElementById("container").style.opacity = 1;
+});
+
+/* آپدیت زنده */
+setInterval(updateCountdown, 1000);
 
 </script>
 
